@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Ponomar&display=swap');
-
-
-body {
-    max-width: 390px;
-    background: lightgreen;
-    font-family: "Ponomar", normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
 
 h1 {
-    color: green;
-    font-size: 72px;
-    text-align: center;
-    background: black;
+    max-width: 800px;
+    color: gray;
+    font-family: "Saira", sans-serif;
+    text-align: center
+}
+
+button {
+    max-width: 800px;
+    color: gray;
+    font-family: "Saira", sans-serif;
 }
