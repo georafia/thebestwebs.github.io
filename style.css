@@ -12,3 +12,17 @@ button {
     color: gray;
     font-family: "Saira", sans-serif;
 }
+
+p {
+    max-width: 800px;
+    color: gray;
+    font-family: "Saira", sans-serif;
+    text-align: center
+}
+
+div {
+    max-width: 800px;
+    color: gray;
+    font-family: "Saira", sans-serif;
+    text-align: center
+}
