@@ -6,6 +6,20 @@
     <title>Title</title>
 </head>
 <body>
+    <form action="">
+        <div class="input">
+            <label>Input your name:</label>
+            <input id="user-name" type="text">
+        </div>
+        <div class="input">
+            <label>Input your email:</label>
+            <input id="user-email" type="email">
+        </div>
+        <div class="input">
+            <label>Input your phone number:</label>
+            <input id="user-phone" type="number">
+        </div>
+    </form>
     <div class = 'header'>
         <h1>Traveling tickets</h1>
         <p>Service for purchasing tickets</p>
@@ -13,20 +27,28 @@
     <div class = 'inner'>
         <div class = 'item'>
             Moscow -> Sankt-Peterburg: 19$
-            <button class="btn" id="btn1">Purchase</button>
+            <button class="btn" id="btn1">Add to cart</button>
         </div>
         <div class = 'item'>
             Rostov-On-Don -> Krasnodar: 12$
-            <button class="btn" id="btn2">Purchase</button>
+            <button class="btn" id="btn2">Add to cart</button>
         </div>
         <div class = 'item'>
             Kislovodsk -> Krasnodar: 21$
-            <button class="btn" id="btn3">Purchase</button>
+            <button class="btn" id="btn3">Add to cart</button>
         </div>
         <div class = 'item'>
             Volgograd -> Volgodonsk: 11$
-            <button class="btn" id="btn4">Purchase</button>
+            <button class="btn" id="btn4">Add to cart</button>
         </div>
+    </div>
+    <ul class="usercard" id="usercard">
+        <h1>Your orders: </h1>
+    </ul>
+    <div id="result">
+        <button id="submit">
+            Purchase
+        </button>
     </div>
     <div class="footer">
         <h1>Service info</h1>
