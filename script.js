@@ -1,5 +1,7 @@
 let tg = window.Telegram.WebApp;
 
+tg.expand()
+
 tg.MainButton.textColor = "#FFFFFF"
 tg.MaimButton.color = "#2cab37"
 
@@ -8,7 +10,8 @@ let btn2 = document.querySelector('#btn2')
 let btn3 = document.querySelector('#btn3')
 let btn4 = document.querySelector('#btn4')
 
-let  name = ""
+let price = 0
+let name = ""
 let phone = ""
 let e-mail = ""
 
@@ -19,56 +22,59 @@ let items = {
     Volgograd -> Volgodonsk: 0
 }
 
+let usercard = document.querySelector('#usercard')
+let username = document.querySelector('#user-name')
+let useremail = document.querySelector('#user-email')
+let userphone = document.querySelector('#user-phone')
+
+function create_li(text) {
+    let li = document.createElement("li")
+    li.innerHTML = Text
+    usercard.appendChild(li)
+}
+
 btn1.onclick = () => {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide()
-    } else {
-        tg.MainButton.setText("You bought: Moscow -> Sankt-Peterburg")
-        item = "Moscow -> Sankt-Peterburg"
-        items['Moscow -> Sankt-Peterburg'] += 1
-        update_orders()
-    }
+    items['Moscow -> Sankt-Peterburg'] += 1
+    price += 19
+    update_orders()
 }
 
 btn2.onclick = () => {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide()
-    } else {
-        tg.MainButton.setText("You bought: Rostov-On-Don -> Krasnodar")
-        item = "Rostov-On-Don -> Krasnodar"
-        items['Rostov-On-Don -> Krasnodar'] += 1
-        update_orders()
-    }
+    items['Rostov-On-Don -> Krasnodar'] += 1
+    price += 12
+    update_orders()
 }
 
 btn3.onclick = () => {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide()
-    } else {
-        tg.MainButton.setText("You bought: kislovodsk -> krasnodar")
-        item = "kislovodsk -> krasnodar"
-        items['kislovodsk -> krasnodar'] += 1
-        update_orders()
-    }
+    items['kislovodsk -> krasnodar'] += 1
+    price += 21
+    update_orders()
 }
 
 btn4.onclick = () => {
-    if (tg.MainButton.isVisible) {
-        tg.MainButton.hide()
-    } else {
-        tg.MainButton.setText("You bought: Volgograd -> Volgodonsk")
-        item = "Volgograd -> Volgodonsk"
-        items['Volgograd -> Volgodonsk'] += 1
-        update_orders()
-    }
+    items['Volgograd -> Volgodonsk'] += 1
+    price += 11
+    update_orders()
 }
 
-Telegram.WebApp.onEvent("mainButtonClicked", function() {
-    tg.sendData(item);
-})
+let submit = document.querySelector("#submit")
+
+submit.onclick = () => {
+    tg.MainButton.setText("Press the button to confirm the order")
+    tg.MainButton.show()
+}
 
 function update_orders() {
     usercard.innerHTML = "Your orders: "
+    if (name != "") {
+        create_li("Name - " + name)
+    }
+    if (email != "") {
+        create_li("Email - " + email)
+    }
+    if (phone != "") {
+        create_li("Phone number - " + phone)
+    }
     for (let item in items) {
         if (items[item] != 0) {
             let li = document.createElement("li")
@@ -78,4 +84,36 @@ function update_orders() {
     }
 }
 
-tg.expand()
+username.onchange() = () => {
+    name = username.value
+}
+
+useremail.onchange() = () => {
+    name = useremail.value
+}
+
+userphone.onchange() = () => {
+    name = userphone.value
+}
+
+Telegram.WedApp.onEvent("mainButtonClicked", function() {
+    result = ""
+    if (name != "") {
+        create_li("Name - " + name)
+    }
+    if (email != "") {
+        create_li("Email - " + email)
+    }
+    if (phone != "") {
+        create_li("Phone number - " + phone)
+    }
+
+    result += "Your orders: \n"
+    for (let item in items) {
+        if (items[item] != 0) {
+            result += item + " : " + items[item] + "\n"
+        }
+    }
+    result += "\n\n Total price: " + price + "$"
+    tg.sendData(result)
+})
